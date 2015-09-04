@@ -23,23 +23,23 @@
  */
 package com.qcadoo.mes.basic.hooks;
 
-import static com.qcadoo.mes.basic.constants.ProductFamilyElementType.PARTICULAR_PRODUCT;
-import static com.qcadoo.mes.basic.constants.ProductFields.EAN;
-import static com.qcadoo.mes.basic.constants.ProductFields.ENTITY_TYPE;
-import static com.qcadoo.mes.basic.constants.ProductFields.PARENT;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.qcadoo.mes.basic.ProductService;
 import com.qcadoo.mes.basic.constants.ProductFamilyElementType;
 import com.qcadoo.mes.basic.constants.ProductFields;
+import com.qcadoo.mes.basic.constants.SubstituteFields;
 import com.qcadoo.mes.basic.tree.ProductNumberingService;
 import com.qcadoo.model.api.DataDefinition;
 import com.qcadoo.model.api.Entity;
 import com.qcadoo.model.api.search.SearchRestrictions;
+import com.qcadoo.model.api.validators.ErrorMessage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+
+import static com.qcadoo.mes.basic.constants.ProductFamilyElementType.PARTICULAR_PRODUCT;
+import static com.qcadoo.mes.basic.constants.ProductFields.*;
 
 @Service
 public class ProductHooks {
@@ -56,6 +56,19 @@ public class ProductHooks {
 
     public void updateNodeNumber(final DataDefinition productDD, final Entity product) {
         productNumberingService.updateNodeNumber(product);
+    }
+
+    public void versionPlus(final DataDefinition substituteComponentDD, final Entity substituteComponent) {
+        Entity product = substituteComponent.getBelongsToField(SubstituteFields.BASE_PRODUCT);
+        product.getDataDefinition().tryUpdateVersion(product);
+
+        for (Map.Entry<String, ErrorMessage> entry : product.getErrors().entrySet()) {
+            substituteComponent.addError(substituteComponentDD.getField(entry.getKey()), entry.getValue().getMessage());
+        }
+
+        for (ErrorMessage msg : product.getGlobalErrors()) {
+            substituteComponent.addGlobalError(msg.getMessage(), msg.getAutoClose(), msg.getVars());
+        }
     }
 
     public void clearFamilyFromProductWhenTypeIsChanged(final DataDefinition productDD, final Entity product) {

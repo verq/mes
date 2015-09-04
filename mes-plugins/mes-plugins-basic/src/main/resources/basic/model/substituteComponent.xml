@@ -43,6 +43,8 @@
         <!--method="checkIfSubstituteIsNotRemoved"/>-->
         <validatesWith class="com.qcadoo.mes.basic.ProductService"
                        method="checkSubstituteComponentUniqueness"/>
+
+        <validatesWith class="com.qcadoo.mes.basic.hooks.ProductHooks" method="versionPlus" />
     </hooks>
 
     <identifier expression="#product['number'] + ' - ' + #product['name']"/>
