@@ -130,6 +130,7 @@
         <model:model model="shift" resource="model/shift.xml"/>
         <model:model model="shiftTimetableException" resource="model/shiftTimetableException.xml"/>
         <model:model model="product" resource="model/product.xml"/>
+        <model:model model="purchase" resource="model/purchase.xml"/>
         <model:model model="substitute" resource="model/substitute.xml"/>
         <model:model model="substituteComponent" resource="model/substituteComponent.xml"/>
         <model:model model="workstationType" resource="model/workstationType.xml"/>
@@ -178,6 +179,7 @@
         <menu:menu-item name="products" category="basic" view="productsList" defaultAuthorizationRole="ROLE_PRODUCTS"/>
         <menu:menu-item name="productsFamilies" category="basic"
                         view="productsFamilies" defaultAuthorizationRole="ROLE_PRODUCT_FAMILIES"/>
+        <menu:menu-item name="purchases" category="basic" view="purchasesList"/>
 
         <menu:menu-item-url name="dictionariesInBasic"
                             category="basic" url="/page/qcadooDictionaries/dictionariesList.html"
@@ -223,6 +225,8 @@
         <view:view resource="view/productSubstituteComponentDetails.xml"/>
         <view:view resource="view/productsFamilies.xml"/>
         <view:view resource="view/productFamiliesAddProduct.xml"/>
+        <view:view resource="view/purchasesList.xml"/>
+        <view:view resource="view/purchaseDetails.xml"/>
 
         <view:view resource="view/workstationTypesList.xml"/>
         <view:view resource="view/workstationTypeDetails.xml"/>
