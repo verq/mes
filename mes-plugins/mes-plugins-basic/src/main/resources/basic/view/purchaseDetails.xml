@@ -69,7 +69,5 @@
 	</component>
 	
 	<hooks>
-		<beforeRender class="com.qcadoo.mes.basic.ShiftsServiceImpl"
-			method="setHourFieldsState" />
 	</hooks>
 </view>
