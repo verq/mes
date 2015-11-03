@@ -28,12 +28,21 @@
 	xmlns="http://schema.qcadoo.org/model"
 	xsi:schemaLocation="http://schema.qcadoo.org/model http://schema.qcadoo.org/model.xsd">
 	<fields>
-		<integer name="quantity"/>
-		<decimal name="price" />
+		<decimal name="quantity" required="true">
+			<validatesUnscaledValue max="9"/>
+			<validatesScale max="5"/>
+		</decimal>
+		<decimal name="price" required="true">
+			<validatesUnscaledValue max="9"/>
+			<validatesScale max="2"/>
+		</decimal>
 		<date name="date"/>
-		<belongsTo name="product" plugin="basic" model="product"/>
+		<belongsTo name="product" plugin="basic" model="product" required="true"/>
 	</fields>
 
 	<hooks>
+		<validatesWith
+				class="com.qcadoo.mes.basic.validators.BasicPurchaseValidators"
+				method="validatesWith" />
 	</hooks>
 </model>
