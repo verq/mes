@@ -43,7 +43,7 @@
 			<option type="order" column="name" direction="asc" />
 
 			<option type="searchable" value="name" />
-			<option type="orderable" value="name" />
+			<option type="orderable" value="name,price,quantity,date" />
 
 			<option type="correspondingView" value="basic/purchaseDetails" />
 			<option type="correspondingComponent" value="form" />
