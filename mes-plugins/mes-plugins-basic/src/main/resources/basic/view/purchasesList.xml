@@ -32,7 +32,7 @@
     <component type="window" name="window">
 
         <ribbon>
-            <template name="standardGridTemplate"/>
+            <template name="standardGridTemplate" excludeItems="actions.copy"/>
             <group name="averagePrice">
                 <bigButton name="countAveragePrice" state="enabled" action="#{window}.fireEvent(countAveragePrice);"
                            icon="updateIcon24.png" reference="countAveragePrice">
