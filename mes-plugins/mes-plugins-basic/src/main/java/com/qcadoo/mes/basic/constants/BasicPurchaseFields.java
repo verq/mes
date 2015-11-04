@@ -2,7 +2,7 @@
  * ***************************************************************************
  * Copyright (c) 2010 Qcadoo Limited
  * Project: Qcadoo MES
- * Version: 1.4
+ * Version: 1.5
  *
  * This file is part of Qcadoo.
  *
@@ -26,7 +26,6 @@ package com.qcadoo.mes.basic.constants;
 public final class BasicPurchaseFields {
 
     private BasicPurchaseFields() {
-
     }
 
     public static final String PRODUCT = "product";
@@ -37,4 +36,5 @@ public final class BasicPurchaseFields {
 
     public static final String DATE = "date";
 
+    public static final String PURCHASE_AVARAGE_PRICE = "purchaseAveragePrice";
 }
