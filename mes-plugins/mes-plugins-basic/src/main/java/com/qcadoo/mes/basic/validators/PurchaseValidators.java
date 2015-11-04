@@ -54,7 +54,7 @@ public class PurchaseValidators {
             return true;
         }
 
-        if ((quantity != null) && (quantity.compareTo(BigDecimal.ZERO) <= 0)) {
+        if (quantity.compareTo(BigDecimal.ZERO) <= 0) {
             basicPurchase.addError(basicPurchaseDD.getField(PurchaseFields.QUANTITY),
                     "basicPurchase.basicPurchase.quantity.error.lowerOrEqualZero");
         }
@@ -73,7 +73,7 @@ public class PurchaseValidators {
             return true;
         }
 
-        if ((price != null) && (price.compareTo(BigDecimal.ZERO) <= 0)) {
+        if (price.compareTo(BigDecimal.ZERO) <= 0) {
             basicPurchase.addError(basicPurchaseDD.getField(PurchaseFields.PRICE),
                     "basicPurchase.basicPurchase.price.error.lowerOrEqualZero");
         }
