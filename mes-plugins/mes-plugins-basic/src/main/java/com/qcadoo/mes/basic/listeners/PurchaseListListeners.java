@@ -53,9 +53,9 @@ public class PurchaseListListeners {
                 priceSum = priceSum.add(p.getDecimalField(PurchaseFields.PRICE), numberService.getMathContext());
             }
             BigDecimal averageCost = priceSum.divide(new BigDecimal(purchases.size()), numberService.getMathContext());
-            view.getComponentByReference(PurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue(averageCost.toString());
+            view.getComponentByReference(PurchaseFields.PURCHASE_AVERAGE_PRICE).setFieldValue(averageCost.toString());
         } else {
-            view.getComponentByReference(PurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue("0");
+            view.getComponentByReference(PurchaseFields.PURCHASE_AVERAGE_PRICE).setFieldValue("0");
         }
     }
 }

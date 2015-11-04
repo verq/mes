@@ -36,5 +36,5 @@ public final class PurchaseFields {
 
     public static final String DATE = "date";
 
-    public static final String PURCHASE_AVARAGE_PRICE = "purchaseAveragePrice";
+    public static final String PURCHASE_AVERAGE_PRICE = "purchaseAveragePrice";
 }
