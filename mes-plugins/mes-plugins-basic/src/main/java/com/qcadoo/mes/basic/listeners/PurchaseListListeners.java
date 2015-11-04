@@ -38,21 +38,25 @@ import java.util.List;
 @Service
 public class PurchaseListListeners {
 
+    private static String L_GRID = "grid";
+
     @Autowired
     private NumberService numberService;
 
     @SuppressWarnings("unused") //it's used in purchaseList.xml view
     public void countAveragePrice(final ViewDefinitionState view, final ComponentState componentState, final String[] args) {
 
-        GridComponent gridComponent = (GridComponent) view.getComponentByReference("grid");
+        GridComponent gridComponent = (GridComponent) view.getComponentByReference(L_GRID);
         List<Entity> purchases = gridComponent.getEntities();
 
         if (!purchases.isEmpty()) {
             BigDecimal priceSum = new BigDecimal("0");
+            BigDecimal numberOfProducts = new BigDecimal("0");
             for (Entity p : purchases) {
+                numberOfProducts = numberOfProducts.add(p.getDecimalField(PurchaseFields.QUANTITY), numberService.getMathContext());
                 priceSum = priceSum.add(p.getDecimalField(PurchaseFields.PRICE), numberService.getMathContext());
             }
-            BigDecimal averageCost = priceSum.divide(new BigDecimal(purchases.size()), numberService.getMathContext());
+            BigDecimal averageCost = priceSum.divide(numberOfProducts, numberService.getMathContext());
             view.getComponentByReference(PurchaseFields.PURCHASE_AVERAGE_PRICE).setFieldValue(averageCost.toString());
         } else {
             view.getComponentByReference(PurchaseFields.PURCHASE_AVERAGE_PRICE).setFieldValue("0");
