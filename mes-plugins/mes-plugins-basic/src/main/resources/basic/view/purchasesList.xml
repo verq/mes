@@ -24,53 +24,55 @@
     ***************************************************************************
 
 -->
-<view defaultAuthorizationRole="ROLE_BASE_FUNCTIONALITY" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schema.qcadoo.org/view"
-	xsi:schemaLocation="http://schema.qcadoo.org/view http://schema.qcadoo.org/view.xsd"
-	name="purchasesList" modelName="purchase" menuAccessible="true">
+<view defaultAuthorizationRole="ROLE_BASE_FUNCTIONALITY" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns="http://schema.qcadoo.org/view"
+      xsi:schemaLocation="http://schema.qcadoo.org/view http://schema.qcadoo.org/view.xsd"
+      name="purchasesList" modelName="purchase" menuAccessible="true">
 
-	<component type="window" name="window">
+    <component type="window" name="window">
 
-		<ribbon>
-			<template name="standardGridTemplate" />
+        <ribbon>
+            <template name="standardGridTemplate"/>
             <group name="averagePrice">
                 <bigButton name="countAveragePrice" state="enabled" action="#{window}.fireEvent(countAveragePrice);"
                            icon="updateIcon24.png" reference="countAveragePrice">
                 </bigButton>
             </group>
-		</ribbon>
+        </ribbon>
 
-		<component type="gridLayout" name="gridLayout" reference="gridLayout" columns="1" rows="2">
+        <component type="gridLayout" name="gridLayout" reference="gridLayout" columns="1" rows="2">
             <layoutElement column="1" row="1">
                 <component type="grid" name="purchase" reference="grid">
-                    <option type="column" name="name" expression="#product?.get('name')" fields="product" link="true" />
-                    <option type="column" name="quantity" fields="quantity" />
+                    <option type="column" name="name" expression="#product?.get('name')" fields="product" link="true"/>
+                    <option type="column" name="quantity" fields="quantity"/>
                     <option type="column" name="price" fields="price"/>
                     <option type="column" name="date" fields="date"/>
 
-                    <option type="order" column="name" direction="asc" />
+                    <option type="order" column="name" direction="asc"/>
 
-                    <option type="searchable" value="name" />
-                    <option type="orderable" value="name,price,quantity,date" />
+                    <option type="searchable" value="name"/>
+                    <option type="orderable" value="name,price,quantity,date"/>
 
-                    <option type="correspondingView" value="basic/purchaseDetails" />
-                    <option type="correspondingComponent" value="form" />
+                    <option type="correspondingView" value="basic/purchaseDetails"/>
+                    <option type="correspondingComponent" value="form"/>
 
-                    <option type="fullscreen" value="true" />
-                    <option type="multiselect" value="true" />
+                    <option type="fullscreen" value="true"/>
+                    <option type="multiselect" value="true"/>
                 </component>
             </layoutElement>
             <layoutElement column="1" row="2">
-                <component type="input" name="purchaseAveragePrice" defaultEnabled="false" reference="purchaseAveragePrice">
+                <component type="input" name="purchaseAveragePrice" defaultEnabled="false"
+                           reference="purchaseAveragePrice">
                 </component>
             </layoutElement>
-		</component>
+        </component>
 
         <listener event="countAveragePrice"
                   class="com.qcadoo.mes.basic.listeners.PurchaseListListeners"
-                  method="countAveragePrice" />
+                  method="countAveragePrice"/>
 
-		<option type="fixedHeight" value="true" />
-		<option type="header" value="false" />
-	</component>
+        <option type="fixedHeight" value="true"/>
+        <option type="header" value="false"/>
+    </component>
 
 </view>
