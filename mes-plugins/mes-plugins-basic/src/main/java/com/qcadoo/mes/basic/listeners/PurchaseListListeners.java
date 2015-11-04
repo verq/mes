@@ -23,7 +23,7 @@
  */
 package com.qcadoo.mes.basic.listeners;
 
-import com.qcadoo.mes.basic.constants.BasicPurchaseFields;
+import com.qcadoo.mes.basic.constants.PurchaseFields;
 import com.qcadoo.model.api.Entity;
 import com.qcadoo.model.api.NumberService;
 import com.qcadoo.view.api.ComponentState;
@@ -50,12 +50,12 @@ public class PurchaseListListeners {
         if (!purchases.isEmpty()) {
             BigDecimal priceSum = new BigDecimal("0");
             for (Entity p : purchases) {
-                priceSum = priceSum.add(p.getDecimalField(BasicPurchaseFields.PRICE), numberService.getMathContext());
+                priceSum = priceSum.add(p.getDecimalField(PurchaseFields.PRICE), numberService.getMathContext());
             }
             BigDecimal averageCost = priceSum.divide(new BigDecimal(purchases.size()), numberService.getMathContext());
-            view.getComponentByReference(BasicPurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue(averageCost.toString());
+            view.getComponentByReference(PurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue(averageCost.toString());
         } else {
-            view.getComponentByReference(BasicPurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue("0");
+            view.getComponentByReference(PurchaseFields.PURCHASE_AVARAGE_PRICE).setFieldValue("0");
         }
     }
 }

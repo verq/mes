@@ -23,9 +23,9 @@
  */
 package com.qcadoo.mes.basic.constants;
 
-public final class BasicPurchaseFields {
+public final class PurchaseFields {
 
-    private BasicPurchaseFields() {
+    private PurchaseFields() {
     }
 
     public static final String PRODUCT = "product";

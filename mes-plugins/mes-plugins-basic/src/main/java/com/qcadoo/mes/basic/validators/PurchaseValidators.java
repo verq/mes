@@ -23,7 +23,7 @@
  */
 package com.qcadoo.mes.basic.validators;
 
-import com.qcadoo.mes.basic.constants.BasicPurchaseFields;
+import com.qcadoo.mes.basic.constants.PurchaseFields;
 import com.qcadoo.model.api.DataDefinition;
 import com.qcadoo.model.api.Entity;
 import org.springframework.stereotype.Service;
@@ -38,14 +38,14 @@ public class PurchaseValidators {
     }
 
     private boolean checkValueOfQuantity(final DataDefinition basicPurchaseDD, final Entity basicPurchase) {
-        BigDecimal quantity = basicPurchase.getDecimalField(BasicPurchaseFields.QUANTITY);
+        BigDecimal quantity = basicPurchase.getDecimalField(PurchaseFields.QUANTITY);
 
         if (quantity == null) {
             return true;
         }
 
         if ((quantity != null) && (quantity.compareTo(BigDecimal.ZERO) <= 0)) {
-            basicPurchase.addError(basicPurchaseDD.getField(BasicPurchaseFields.QUANTITY),
+            basicPurchase.addError(basicPurchaseDD.getField(PurchaseFields.QUANTITY),
                     "basicPurchase.basicPurchase.quantity.error.lowerOrEqualZero");
         }
 
@@ -57,14 +57,14 @@ public class PurchaseValidators {
     }
 
     private boolean checkValueOfPrice(final DataDefinition basicPurchaseDD, final Entity basicPurchase) {
-        BigDecimal price = basicPurchase.getDecimalField(BasicPurchaseFields.PRICE);
+        BigDecimal price = basicPurchase.getDecimalField(PurchaseFields.PRICE);
 
         if (price == null) {
             return true;
         }
 
         if ((price != null) && (price.compareTo(BigDecimal.ZERO) <= 0)) {
-            basicPurchase.addError(basicPurchaseDD.getField(BasicPurchaseFields.PRICE),
+            basicPurchase.addError(basicPurchaseDD.getField(PurchaseFields.PRICE),
                     "basicPurchase.basicPurchase.price.error.lowerOrEqualZero");
         }
 
