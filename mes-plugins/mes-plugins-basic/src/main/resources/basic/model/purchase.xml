@@ -42,7 +42,7 @@
 
 	<hooks>
 		<validatesWith
-				class="com.qcadoo.mes.basic.validators.BasicPurchaseValidators"
+				class="com.qcadoo.mes.basic.validators.PurchaseValidators"
 				method="validatesWith" />
 	</hooks>
 </model>

@@ -2,7 +2,7 @@
  * ***************************************************************************
  * Copyright (c) 2010 Qcadoo Limited
  * Project: Qcadoo MES
- * Version: 1.4
+ * Version: 1.5
  *
  * This file is part of Qcadoo.
  *
@@ -31,7 +31,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class BasicPurchaseValidators {
+public class PurchaseValidators {
 
     public boolean validatesWith(final DataDefinition basicPurchaseDD, final Entity basicPurchase) {
         return checkValueOfQuantity(basicPurchaseDD, basicPurchase) && checkValueOfPrice(basicPurchaseDD, basicPurchase);
